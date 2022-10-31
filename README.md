@@ -12,6 +12,6 @@
 
 ###   ● Hora actual / Temperatura: La aplicación debe contar con una pantalla de visualización de la fecha y hora, temperatura actual (API de clima / Axios) y ubicación. La Temperatura se debe poder obtener según el geoposicionamiento del dispositivo (Location).  
 
-##
+## 
 
 ###   ● Llamado de Emergencia:  Cuando en la pantalla principal se sacuda rápidamente (sensores / accelerometer) se debe enviar un SMS/Mensaje vía WhatsApp al número configurado para tal fin. 
