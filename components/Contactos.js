@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, TextInput,Vibration, Alert } from 'react-native';
 import * as Contacts from 'expo-contacts';
 import { useEffect, useState } from 'react';
 
@@ -6,6 +6,13 @@ export default function Contactos() {
   let [error, setError] = useState(undefined);
   let [contactos, setContactos] = useState(undefined);
   const [search, setSearch] = useState('')
+
+  function mostrarError(){
+    if(error != undefined){
+      Alert.alert("Error",error)
+      Vibration.vibrate([1000],false)
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -19,9 +26,13 @@ export default function Contactos() {
           setContactos(data);
         } else {
           setError("No se han encontrado contactos");
+          mostrarError()
+          setError(undefined)
         }
       } else {
         setError("El acceso ha sido denegado.");
+        mostrarError()
+        setError(undefined)
       }
     })();
   }, []);
@@ -69,6 +80,8 @@ export default function Contactos() {
     }
   }
 
+
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{ marginTop: 80 }}>ESTA ES SU LISTA DE CONTACTOS:</Text>
@@ -85,7 +98,6 @@ export default function Contactos() {
       <ScrollView>
         {getContactRows()}
       </ScrollView>
-      <Text>{error}</Text>
     </SafeAreaView>
   );
 }
