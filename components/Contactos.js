@@ -8,10 +8,8 @@ export default function Contactos() {
   const [search, setSearch] = useState('')
 
   function mostrarError(){
-    if(error != undefined){
       Alert.alert("Error",error)
-      Vibration.vibrate([1000],false)
-    }
+      Vibration.vibrate([1000,400,100],false)
   }
 
   useEffect(() => {
