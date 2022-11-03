@@ -8,6 +8,7 @@ export default function Temperatura() {
   const [error, setErrorMsg] = useState("")
   const [latitud, setLatitud] = useState(0);
   const [longitud, setLongitud] = useState(0);
+  let hola = ""
   
   useEffect(() => {
     (async () => {
@@ -25,21 +26,20 @@ export default function Temperatura() {
       console.log(location.coords.longitude)
       setLatitud(location.coords.latitude);
       setLongitud(location.coords.longitude);
+      axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitud}&lon=${longitud}&appid=52992a09808232c0bcc0b01431de8803`)
+      .then(function (response) {
+          console.log(response.data)
+          hola = response
+      })
+      .catch(function (error) {
+          console.log(error);
+      })
     })();
   }, []);
 
-  axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitud}&lon=${longitud}&appid=52992a09808232c0bcc0b01431de8803`)
-  .then(function (response) {
-      console.log(response)
-
-  })
-  .catch(function (error) {
-      console.log(error);
-  })
-
   return (
     <>
-        <Text>{response}</Text>
+        <Text>{hola}</Text>
     </>
   );
 }

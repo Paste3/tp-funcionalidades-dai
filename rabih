@@ -1,7 +1,0 @@
-      <Picker
-        selectedValue={armarioApp}
-        style={styles.dropdown}
-        onValueChange={(itemValue) => onChangeArmario(itemValue)}
-      >
-        <Picker.Item label="Elija el armario en donde guardar la prenda" value="" />
-      </Picker>
