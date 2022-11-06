@@ -92,6 +92,7 @@ export default function Contactos() {
       }}
         value={search}
         onChangeText={setSearch}
+        placeholder="Buscar contacto"
       ></TextInput>
       <ScrollView>
         {getContactRows()}

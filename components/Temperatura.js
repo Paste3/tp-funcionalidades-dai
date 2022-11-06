@@ -6,9 +6,8 @@ import axios from 'axios';
 export default function Temperatura() {
   const [location, setLocation] = useState(null);
   const [error, setErrorMsg] = useState("")
-  const [latitud, setLatitud] = useState(0);
-  const [longitud, setLongitud] = useState(0);
-  let hola = ""
+  const [latitud, setLatitud] = useState(null);
+  const [longitud, setLongitud] = useState(null);
   
   useEffect(() => {
     (async () => {
@@ -22,34 +21,24 @@ export default function Temperatura() {
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
       JSON.stringify(location);
-      console.log(location.coords.latitude)
-      console.log(location.coords.longitude)
       setLatitud(location.coords.latitude);
       setLongitud(location.coords.longitude);
-      axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitud}&lon=${longitud}&appid=52992a09808232c0bcc0b01431de8803`)
-      .then(function (response) {
-          console.log(response.data)
-          hola = response
-      })
-      .catch(function (error) {
-          console.log(error);
-      })
+      if(latitud && longitud) {
+        axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitud}&lon=${longitud}&appid=8e3d5e96633454f5ec7599983eb5e3d5`)
+        .then(function (response) {
+            console.log(response.data)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+      }
     })();
   }, []);
 
   return (
     <>
-        <Text>{hola}</Text>
+        <Text>{longitud}</Text>
+        <Text>{latitud}</Text>
     </>
   );
 }
-const styles = StyleSheet.create({
-circle: {
-    width: 20,
-    height: 20,
-    borderRadius: 20 / 2,
-    backgroundColor: 'blue',
-    borderWidth: 2,
-    borderColor: "gray"
-}
-});
