@@ -13,7 +13,7 @@ export default function Sensor() {
 
 
   const sendMsg = () => {
-    let URL = 'whatsapp://send?text=' + "" + '&phone=54' + "1135787321";
+    let URL = 'whatsapp://send?text=' + "" + '&phone=54' + "1167914216";
 
     Linking.openURL(URL)
       .then((data) => {
