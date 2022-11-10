@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import TempDateScreen from '../screens/TempDateScreen';
 import ContactosScreen from '../screens/ContactosScreen';
 import VerHoraScreen from '../screens/VerHoraScreen';
+import MensajeEmergenciaScreen from '../screens/MensajeEmergenciaScreen';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -26,6 +27,10 @@ const MyStack = () => {
         <Stack.Screen
           name="VerHoraScreen"
           component={VerHoraScreen}
+        />
+        <Stack.Screen
+          name="MensajeEmergenciaScreen"
+          component={MensajeEmergenciaScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

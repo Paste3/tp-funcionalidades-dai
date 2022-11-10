@@ -13,6 +13,11 @@ export default function HomeScreen({navigation}){
                 title="Ir a contactos"
                 onPress={() => navigation.navigate("ContactosScreen")}
             ></Button>
+            <Button
+                style={{ margin: "20px" }}
+                title="Ir a mensaje emergencia"
+                onPress={() => navigation.navigate("MensajeEmergenciaScreen")}
+            ></Button>
         </>
     )
 }
